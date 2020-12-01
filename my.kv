@@ -1,0 +1,270 @@
+WindowManager:
+    mainMenu:
+    addNanoLeaf:
+    existingNanoLeaf:
+    leafChecker:
+    panelLayout:
+
+<leafChecker>:
+    name: "leafchecker"
+
+    FloatLayout:
+
+        FloatLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.043, 0.055, 0.333, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Image:
+                source: "Images/Background.jpg"
+                size: self.texture_size
+
+            Button:
+                text: "Existing Authentication Code"
+                width: 100
+                height: 50
+                size_hint: .3, .2
+                pos_hint: {"x": 0.1, "top": 0.8 }
+                background_normal: ''
+                background_color: 0, 0, 0.5, 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.existingUser()
+
+            Button:
+                text: "New Authentication Code"
+                width: 100
+                height: 50
+                size_hint: .3, .2
+                pos_hint: {"x": 0.5, "top": 0.8 }
+                background_normal: ''
+                background_color: 0, 0, 0.5, 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.newUser()
+
+<mainMenu>:
+    name: "main"
+    online: online
+    offline: offline
+
+
+    FloatLayout:
+
+        FloatLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.043, 0.055, 0.333, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Image:
+                source: "Images/Background.jpg"
+                size: self.texture_size
+
+            Label:
+                text: "Nano Leaf Status: "
+                size_hint: 0.2, 0.05
+                pos_hint: {"x": 0.6, "top": 0.98 }
+                font_size: 30
+                color: 0,0,0, 1
+
+            Image:
+                id: online
+                source: "Images/Online.png"
+                pos: 330, 270
+                opacity: 0
+
+            Image:
+                id: offline
+                source: "Images/Offline.png"
+                pos: 330, 270
+                opacity: 0
+
+            Button:
+                background_normal: 'Images/OnButton.png'
+                background_down: 'Images/OnButton_Down.png'
+                pos_hint: {"x": 0.35, "top": 0.2 }
+                size_hint: .06, .08
+                on_release:
+                    root.switch_on()
+
+            Button:
+                background_normal: 'Images/OffButton.png'
+                background_down: 'Images/OffButton_Down.png'
+                pos_hint: {"x": 0.55, "top": 0.2 }
+                size_hint: .06, .08
+                on_release:
+                    root.switch_off()
+
+            Button:
+                background_normal: 'Images/Smiley.png'
+                pos_hint: {"x": 0.55, "top": 0.5 }
+                size_hint: .1, .1
+                on_release:
+                    root.red()
+
+            Button:
+                text: "Get Panel Layout"
+                width: 100
+                height: 50
+                size_hint: .3, .2
+                pos_hint: {"x": 0.1, "top": 0.8 }
+                background_normal: ''
+                background_color: 0, 0, 0.5, 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.PanelLayoutOpen()
+
+
+
+
+
+
+<addNanoLeaf>:
+    name: "addleaf"
+    ip: ip
+    authCode: authCode
+
+    FloatLayout:
+
+        FloatLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.043, 0.055, 0.333, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Image:
+                source: "Images/Background.jpg"
+                size: self.texture_size
+
+            TextInput:
+                id: ip
+                multiline: False
+                opacity: 1
+                size_hint: 0.3, 0.05
+                pos_hint: {"x": 0.3, "top": 0.9 }
+
+            Label:
+                text: "Enter NanoLeaf IP:"
+                size_hint: 0.2, 0.05
+                pos_hint: {"x": 0.05, "top": 0.9 }
+                font_size: 25
+                color: 0,0,0, 1
+
+            Label:
+                id: authCode
+                text: ""
+                size_hint: 0.1, 0.05
+                pos_hint: {"x": 0.5, "top": 0.7 }
+                font_size: 25
+                color: 0,0,0, 1
+
+            Label:
+                text: "Authorisation Code:"
+                size_hint: 0.2, 0.05
+                pos_hint: {"x": 0.05, "top": 0.7 }
+                font_size: 25
+                color: 0,0,0, 1
+
+            Button:
+                text: "Generate New User"
+                width: 100
+                height: 50
+                size_hint: .3, .2
+                pos_hint: {"x": 0.3, "top": 0.3 }
+                background_normal: ''
+                background_color: 0, 0, 0.5, 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.getCode()
+
+
+<existingNanoLeaf>:
+    name: "existingleaf"
+    ip: ip
+    authCode: authCode
+
+    FloatLayout:
+    
+
+        FloatLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.043, 0.055, 0.333, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Image:
+                source: "Images/Background.jpg"
+                size: self.texture_size
+
+            TextInput:
+                id: ip
+                multiline: False
+                opacity: 1
+                size_hint: 0.3, 0.05
+                pos_hint: {"x": 0.3, "top": 0.9 }
+
+            Label:
+                text: "Enter NanoLeaf IP:"
+                size_hint: 0.2, 0.05
+                pos_hint: {"x": 0.05, "top": 0.9 }
+                font_size: 25
+                color: 0,0,0, 1
+
+            TextInput:
+                id: authCode
+                multiline: False
+                opacity: 1
+                size_hint: 0.3, 0.05
+                pos_hint: {"x": 0.3, "top": 0.7 }
+
+            Label:
+                text: "Authorisation Code:"
+                size_hint: 0.2, 0.05
+                pos_hint: {"x": 0.05, "top": 0.7 }
+                font_size: 25
+                color: 0,0,0, 1
+
+            Button:
+                text: "Submit Current User"
+                width: 100
+                height: 50
+                size_hint: .3, .2
+                pos_hint: {"x": 0.3, "top": 0.3 }
+                background_normal: ''
+                background_color: 0, 0, 0.5, 1
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.addData()
+
+<panelLayout>:
+    name: "panellayout"
+
+    FloatLayout:
+
+        FloatLayout:
+            canvas.before:
+                Color:
+                    rgba: 0.043, 0.055, 0.333, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Image:
+                source: "Images/Background.jpg"
+                size: self.texture_size
+
+            Label:
+                id: main_label  # id for accessing this Label
+                size_hint:0.6,0.2
+                color: 0,0,0, 1
+                pos_hint:{"x":0.2,"top":1}
